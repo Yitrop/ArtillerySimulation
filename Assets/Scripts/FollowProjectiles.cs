@@ -1,13 +1,28 @@
 using UnityEngine;
 
-public class FollowProjectile : MonoBehaviour
+public class FollowProjectile : CameraControllerBase
 {
-    public ArtilleryGun gun;        // ссылка на пушку
+    public ArtilleryGun gun;
     public Vector3 offset = new Vector3(0, 2, -6);
-    public float smoothSpeed = 5f;  // плавность камеры
+    public float smoothSpeed = 5f;
+
+    private bool active = false;
+
+    public override void OnActivate()
+    {
+        active = true;
+    }
+
+    public override void OnDeactivate()
+    {
+        active = false;
+    }
 
     void LateUpdate()
     {
+        if (!active)
+            return;
+
         if (gun == null || gun.lastProjectile == null)
             return;
 
