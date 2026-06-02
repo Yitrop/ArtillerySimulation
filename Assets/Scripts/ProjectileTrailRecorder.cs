@@ -1,22 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(LineRenderer))]
-public class ProjectileTrail : MonoBehaviour
+public class ProjectileTrailRecorder : MonoBehaviour
 {
     public float pointSpacing = 0.1f;
 
-    private LineRenderer lr;
     private List<Vector3> points = new List<Vector3>();
     private Vector3 lastPoint;
 
     void Start()
     {
-        lr = GetComponent<LineRenderer>();
-        lr.material = new Material(lr.material);
-
         lastPoint = transform.position;
-        AddPoint();
+        points.Add(lastPoint);
     }
 
     void Update()
@@ -25,15 +20,14 @@ public class ProjectileTrail : MonoBehaviour
 
         if (dist >= pointSpacing)
         {
-            AddPoint();
             lastPoint = transform.position;
+            points.Add(lastPoint);
         }
     }
 
-    void AddPoint()
+    void OnDestroy()
     {
-        points.Add(transform.position);
-        lr.positionCount = points.Count;
-        lr.SetPositions(points.ToArray());
+        if (points.Count > 1)
+            TrajectoryHistoryManager.Instance.AddTrajectory(points);
     }
 }
