@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: -4157998518673854921}
   - component: {fileID: 3177590028431770454}
   - component: {fileID: -3273716452383919727}
-  - component: {fileID: -6302561468335125980}
+  - component: {fileID: 547488442507702006}
+  - component: {fileID: -863801869898788479}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -284,7 +285,20 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &-6302561468335125980
+--- !u!114 &547488442507702006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347247170110702376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0904df0cc3841f64b9f06f14ca306c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileTrailRecorder
+  pointSpacing: 0.1
+--- !u!114 &-863801869898788479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,4 +311,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileTrail
   pointSpacing: 0.1
-  maxLength: 2000
