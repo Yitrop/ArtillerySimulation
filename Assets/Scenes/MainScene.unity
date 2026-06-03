@@ -719,8 +719,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArtilleryGun
   muzzlePoint: {fileID: 377988782}
   projectilePrefab: {fileID: 347247170110702376, guid: e7fc3d72bac6c9e408d7e3c1c31c1a19, type: 3}
-  initialSpeed: 100
-  projectileMass: 10
+  initialSpeed: 690
+  projectileMass: 21.76
   lastProjectile: {fileID: 0}
   fireKey: 32
 --- !u!114 &307238914
@@ -1689,7 +1689,7 @@ MonoBehaviour:
   m_MinValue: 5
   m_MaxValue: 1200
   m_WholeNumbers: 1
-  m_Value: 120
+  m_Value: 690
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   m_MinValue: 0.1
   m_MaxValue: 50
   m_WholeNumbers: 0
-  m_Value: 10
+  m_Value: 21.76
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
