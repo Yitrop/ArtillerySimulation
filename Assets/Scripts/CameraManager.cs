@@ -6,16 +6,18 @@ public class CameraManager : MonoBehaviour
     public class CameraSlot
     {
         public Camera cam;
-        public KeyCode hotkey; // клавиша дл€ включени€ камеры
+        public KeyCode hotkey;
+        public CameraType type;
     }
 
     public CameraSlot[] cameras;
 
+    private CameraSlot activeSlot;
+
     void Start()
     {
-        // ¬ключаем только первую камеру
-        for (int i = 0; i < cameras.Length; i++)
-            cameras[i].cam.enabled = (i == 0);
+        if (cameras.Length > 0)
+            ActivateCamera(cameras[0]);
     }
 
     void Update()
@@ -24,16 +26,30 @@ public class CameraManager : MonoBehaviour
         {
             if (Input.GetKeyDown(slot.hotkey))
             {
-                ActivateCamera(slot.cam);
+                ActivateCamera(slot);
             }
         }
     }
 
-    void ActivateCamera(Camera target)
+    void ActivateCamera(CameraSlot slot)
     {
-        foreach (var slot in cameras)
-            slot.cam.enabled = false;
+        // выключаем все камеры и все их контроллеры
+        foreach (var s in cameras)
+        {
+            s.cam.enabled = false;
 
-        target.enabled = true;
+            var controllers = s.cam.GetComponents<CameraControllerBase>();
+            foreach (var c in controllers)
+                c.OnDeactivate();
+        }
+
+        // включаем нужную камеру и все еЄ контроллеры
+        slot.cam.enabled = true;
+
+        var activeControllers = slot.cam.GetComponents<CameraControllerBase>();
+        foreach (var c in activeControllers)
+            c.OnActivate();
+
+        activeSlot = slot;
     }
 }
