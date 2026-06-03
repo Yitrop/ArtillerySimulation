@@ -717,7 +717,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ab3d4acd5daed4c9583b1d1e713c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArtilleryGun
+  gunPivot: {fileID: 1012819665}
   muzzlePoint: {fileID: 377988782}
+  elevation: 10
+  azimuth: 0
+  minElevation: -5
+  maxElevation: 70
+  minAzimuth: -90
+  maxAzimuth: 90
+  elevationSpeed: 30
+  azimuthSpeed: 40
   projectilePrefab: {fileID: 347247170110702376, guid: e7fc3d72bac6c9e408d7e3c1c31c1a19, type: 3}
   initialSpeed: 690
   projectileMass: 21.76
