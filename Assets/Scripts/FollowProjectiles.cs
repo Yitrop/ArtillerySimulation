@@ -29,7 +29,12 @@ public class FollowProjectile : CameraControllerBase
         Transform target = gun.lastProjectile.transform;
 
         Vector3 desiredPos = target.position + offset;
-        transform.position = Vector3.Lerp(transform.position, desiredPos, smoothSpeed * Time.deltaTime);
+
+        transform.position = Vector3.Lerp(
+            transform.position,
+            desiredPos,
+            smoothSpeed * Time.deltaTime
+        );
 
         transform.LookAt(target);
     }

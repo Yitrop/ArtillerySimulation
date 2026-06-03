@@ -33,22 +33,22 @@ public class CameraManager : MonoBehaviour
 
     void ActivateCamera(CameraSlot slot)
     {
-        // выключаем все камеры и их контроллеры
+        // выключаем все камеры и все их контроллеры
         foreach (var s in cameras)
         {
             s.cam.enabled = false;
 
-            var controller = s.cam.GetComponent<CameraControllerBase>();
-            if (controller != null)
-                controller.OnDeactivate();
+            var controllers = s.cam.GetComponents<CameraControllerBase>();
+            foreach (var c in controllers)
+                c.OnDeactivate();
         }
 
-        // включаем нужную
+        // включаем нужную камеру и все её контроллеры
         slot.cam.enabled = true;
 
-        var activeController = slot.cam.GetComponent<CameraControllerBase>();
-        if (activeController != null)
-            activeController.OnActivate();
+        var activeControllers = slot.cam.GetComponents<CameraControllerBase>();
+        foreach (var c in activeControllers)
+            c.OnActivate();
 
         activeSlot = slot;
     }

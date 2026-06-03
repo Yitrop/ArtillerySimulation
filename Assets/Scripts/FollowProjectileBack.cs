@@ -30,7 +30,11 @@ public class FollowProjectileBack : CameraControllerBase
 
         Vector3 desiredPos = target.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, desiredPos, smooth * Time.deltaTime);
+        transform.position = Vector3.Lerp(
+            transform.position,
+            desiredPos,
+            smooth * Time.deltaTime
+        );
 
         transform.LookAt(target);
     }

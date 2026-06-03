@@ -3401,9 +3401,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraZoom
   allowZoom: 1
-  zoomSpeed: 5
-  minFOV: 20
-  maxFOV: 80
+  zoomSpeed: 50
+  minFOV: 5
+  maxFOV: 120
 --- !u!1 &2085066512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,9 +3617,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraZoom
   allowZoom: 1
-  zoomSpeed: 5
-  minFOV: 20
-  maxFOV: 80
+  zoomSpeed: 50
+  minFOV: 5
+  maxFOV: 120
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

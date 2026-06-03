@@ -36,7 +36,11 @@ public class FollowProjectileSide : CameraControllerBase
             right * sideOffset +
             Vector3.up * height;
 
-        transform.position = Vector3.Lerp(transform.position, desiredPos, smooth * Time.deltaTime);
+        transform.position = Vector3.Lerp(
+            transform.position,
+            desiredPos,
+            smooth * Time.deltaTime
+        );
 
         transform.LookAt(target);
     }

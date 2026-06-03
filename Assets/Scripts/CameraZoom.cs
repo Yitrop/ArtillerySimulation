@@ -33,26 +33,16 @@ public class CameraZoom : CameraControllerBase
 
         float delta = 0f;
 
-        // -----  лавиша O Ч приближение -----
-        if (Input.GetKey(KeyCode.O))
-        {
-            delta = -1f;
-            Debug.Log("ZOOM IN (O)");
-        }
-
-        // -----  лавиша P Ч отдаление -----
         if (Input.GetKey(KeyCode.P))
-        {
-            delta = 1f;
-            Debug.Log("ZOOM OUT (P)");
-        }
+            delta = -1f; // приближение
+
+        if (Input.GetKey(KeyCode.O))
+            delta = 1f;  // отдаление
 
         if (Mathf.Abs(delta) > 0.01f)
         {
             cam.fieldOfView += delta * zoomSpeed * Time.deltaTime;
             cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, minFOV, maxFOV);
-
-            Debug.Log("FOV = " + cam.fieldOfView);
         }
     }
 }
