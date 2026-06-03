@@ -1,15 +1,27 @@
 using UnityEngine;
 
-public class FollowProjectileSide : MonoBehaviour
+public class FollowProjectileSide : CameraControllerBase
 {
     public ArtilleryGun gun;
     public float sideOffset = 5f;
     public float height = 2f;
     public float smooth = 5f;
 
+    private bool active = false;
+
+    public override void OnActivate()
+    {
+        active = true;
+    }
+
+    public override void OnDeactivate()
+    {
+        active = false;
+    }
+
     void LateUpdate()
     {
-        if (!gameObject.GetComponent<Camera>().enabled)
+        if (!active)
             return;
 
         if (gun == null || gun.lastProjectile == null)
@@ -24,7 +36,11 @@ public class FollowProjectileSide : MonoBehaviour
             right * sideOffset +
             Vector3.up * height;
 
-        transform.position = Vector3.Lerp(transform.position, desiredPos, smooth * Time.deltaTime);
+        transform.position = Vector3.Lerp(
+            transform.position,
+            desiredPos,
+            smooth * Time.deltaTime
+        );
 
         transform.LookAt(target);
     }
