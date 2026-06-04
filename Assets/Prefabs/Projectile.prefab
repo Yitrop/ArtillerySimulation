@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -3273716452383919727}
   - component: {fileID: 547488442507702006}
   - component: {fileID: -863801869898788479}
+  - component: {fileID: 2157417305884226629}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -174,7 +175,6 @@ MonoBehaviour:
   dragCoefficient: 0.47
   radius: 0.25
   turbulenceStrength: 0.05
-  massInfluence: 50
 --- !u!120 &-3273716452383919727
 LineRenderer:
   serializedVersion: 3
@@ -311,3 +311,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileTrail
   pointSpacing: 0.1
+--- !u!114 &2157417305884226629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347247170110702376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd32ec45dd31334b89163f02f23fb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoriolisForce
+  latitudeDeg: 56

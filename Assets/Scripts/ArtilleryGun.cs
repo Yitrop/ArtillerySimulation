@@ -3,21 +3,21 @@ using UnityEngine;
 public class ArtilleryGun : MonoBehaviour
 {
     [Header("Transforms")]
-    public Transform gunPivot;      // GunPivot — вертикальный поворот
-    public Transform muzzlePoint;   // MuzzlePoint — точка вылета
+    public Transform gunPivot;      // GunPivot пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+    public Transform muzzlePoint;   // MuzzlePoint пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
     [Header("Rotation Settings")]
-    public float elevation = 10f;       // угол вверх/вниз
-    public float azimuth = 0f;          // угол влево/вправо
+    public float elevation = 10f;       // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ
+    public float azimuth = 0f;          // пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ
 
-    public float minElevation = -5f;    // ограничение вниз
-    public float maxElevation = 70f;    // ограничение вверх
+    public float minElevation = -5f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
+    public float maxElevation = 70f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
-    public float minAzimuth = -90f;     // ограничение влево
-    public float maxAzimuth = 90f;      // ограничение вправо
+    public float minAzimuth = -90f;     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+    public float maxAzimuth = 90f;      // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-    public float elevationSpeed = 30f;  // скорость W/S
-    public float azimuthSpeed = 40f;    // скорость A/D
+    public float elevationSpeed = 30f;  // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ W/S
+    public float azimuthSpeed = 40f;    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ A/D
 
     [Header("Shooting")]
     public GameObject projectilePrefab;
@@ -38,33 +38,33 @@ public class ArtilleryGun : MonoBehaviour
 
     void HandleRotation()
     {
-        // W — вверх
+        // W пїЅ пїЅпїЅпїЅпїЅпїЅ
         if (Input.GetKey(KeyCode.W))
             elevation += elevationSpeed * Time.deltaTime;
 
-        // S — вниз
+        // S пїЅ пїЅпїЅпїЅпїЅ
         if (Input.GetKey(KeyCode.S))
             elevation -= elevationSpeed * Time.deltaTime;
 
-        // A — влево
+        // A пїЅ пїЅпїЅпїЅпїЅпїЅ
         if (Input.GetKey(KeyCode.A))
             azimuth -= azimuthSpeed * Time.deltaTime;
 
-        // D — вправо
+        // D пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         if (Input.GetKey(KeyCode.D))
             azimuth += azimuthSpeed * Time.deltaTime;
 
-        // Ограничения
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         elevation = Mathf.Clamp(elevation, minElevation, maxElevation);
         azimuth = Mathf.Clamp(azimuth, minAzimuth, maxAzimuth);
     }
 
     void ApplyRotation()
     {
-        // Горизонтальный поворот — на корневом объекте ArtilleryGun
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ ArtilleryGun
         transform.localRotation = Quaternion.Euler(0, azimuth, 0);
 
-        // Вертикальный поворот — на GunPivot
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ GunPivot
         if (gunPivot != null)
             gunPivot.localRotation = Quaternion.Euler(-elevation, 0, 0);
     }
@@ -73,7 +73,7 @@ public class ArtilleryGun : MonoBehaviour
     {
         if (projectilePrefab == null || muzzlePoint == null)
         {
-            Debug.LogWarning("ArtilleryGun: projectilePrefab или muzzlePoint не назначены");
+            Debug.LogWarning("ArtilleryGun: projectilePrefab РёР»Рё muzzlePoint РЅРµ РЅР°Р·РЅР°С‡РµРЅС‹");
             return;
         }
 
@@ -82,13 +82,20 @@ public class ArtilleryGun : MonoBehaviour
         Rigidbody rb = proj.GetComponent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogWarning("Projectile не имеет Rigidbody");
+            Debug.LogWarning("Projectile РЅРµ РёРјРµРµС‚ Rigidbody");
             return;
         }
 
         rb.mass = projectileMass;
-        rb.AddForce(muzzlePoint.forward * initialSpeed, ForceMode.Impulse);
+
+        // --- РЈР’Р•Р›РР§РР’РђР•Рњ РЎРљРћР РћРЎРўР¬ Р’ 4 Р РђР—Рђ ---
+        float scaledSpeed = initialSpeed;
+
+        // Р—Р°РґР°С‘Рј СЃРєРѕСЂРѕСЃС‚СЊ РЅР°РїСЂСЏРјСѓСЋ
+        rb.linearVelocity = muzzlePoint.forward * scaledSpeed;
 
         lastProjectile = proj;
     }
+
+
 }
