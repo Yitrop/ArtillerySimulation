@@ -5,7 +5,7 @@ public class RealisticDrag : MonoBehaviour
     public float airDensity0 = 1.225f;
     public float dragCoefficient = 0.47f;
     public float radius = 0.061f;
-    public float turbulenceStrength = 0.02f;
+    public float turbulenceStrength = 0.2f;
     public float massInfluence = 50f;
 
     Rigidbody rb;
@@ -44,7 +44,7 @@ public class RealisticDrag : MonoBehaviour
         dragForce = Mathf.Min(dragForce, rb.mass * 200f);
 
         Vector3 drag = -v.normalized * dragForce;
-        
+
         // --- ТУРБУЛЕНТНОСТЬ, ЗАВИСЯЩАЯ ОТ ВЫСОТЫ ---
 
         // высота
